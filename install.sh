@@ -138,12 +138,18 @@ echo "✅ 火山引擎环境变量已添加到 $rc_file"
 echo ""
 echo "🎉 Installation and configuration completed successfully!"
 echo ""
-echo "🔄 Important: Please restart your terminal or run:"
+
+# 为当前终端会话导出环境变量
+export ANTHROPIC_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+export ANTHROPIC_API_KEY="$volcengine_api_key"
+export ANTHROPIC_MODEL="$volcengine_model_name"
+
+echo "🚀 Launching Claude Code..."
+claude || { echo "Error: Failed to launch Claude Code."; exit 1; }
+echo ""
+echo "🔄 If you want to use Claude Code again later, please restart your terminal or run:"
 echo "   source $rc_file"
 echo ""
-echo "🚀 Then you can start using Claude Code directly:"
-echo "   claude"
-echo ""
-echo "💡 Note: Claude Code will now connect directly to 火山引擎 using your provided API key"
+echo "💡 Note: Claude Code will connect directly to 火山引擎 using your provided API key"
 
 
